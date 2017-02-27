@@ -1,0 +1,26 @@
+<html ng-app="angular.progressbar">
+
+<head>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="todo-wrapper container border-0" ng-controller="DemoController">
+        <h3>Progress bar value is {{dynamic}}</h3>
+        <div class="row">
+            <progressbar max="max" min="min" value="dynamic">
+                <span style="color:black; white-space:nowrap;">
+         {{dynamic}} / {{max}}
+      </span>
+            </progressbar>
+            <input type="button" ng-click="decrementProgress(25)" value="-25" />
+            <input type="button" ng-click="decrementProgress(25)" value="-10" />
+            <input type="button" ng-click="incrementProgress(10)" value="+10" />
+            <input type="button" ng-click="incrementProgress(25)" value="+25" />
+        </div>
+</body>
+
+</html>
