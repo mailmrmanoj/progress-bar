@@ -1,4 +1,6 @@
 /// <reference path="../types/angularjs/angular.d.ts" />
+/// <reference path="../types/angularjs/angular-mocks.d.ts" />
+/// <reference path="../types/jasmine/jasmine.d.ts" />
 declare module ProgressBar {
     class ProgressBarConstants {
         static MODULE: string;
@@ -14,7 +16,7 @@ declare module ProgressBar {
     }
 }
 declare module ProgressBar.Controllers {
-    class DemoController {
+    class ProgressBarController {
         static $inject: string[];
         constructor($scope: any);
     }

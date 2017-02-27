@@ -1,14 +1,12 @@
 ///<reference path="Reference.ts"/>
 module ProgressBar.Controllers {
-    import globalConstants = ProgressBar.ProgressBarConstants;
-    export class DemoController {
+    export class ProgressBarController {
         static $inject = ["$scope"];
 
         constructor($scope) {
             $scope.dynamic = 25;
             $scope.max = 100;
             $scope.min = 0;
-            $scope.isDecrementButtonDisabled = false;
             function compareValue(value) {
                 value = (value == 25) ? 25 : 10;
                 return value;

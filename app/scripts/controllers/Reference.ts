@@ -1,2 +1,2 @@
 ///<reference path="../Reference.ts"/>
-///<reference path="DemoController.ts"/>
+///<reference path="ProgressBarController.ts"/>

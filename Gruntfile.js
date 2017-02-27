@@ -12,6 +12,12 @@ module.exports = function (grunt) {
                 src: ["app/**/*.ts"], // The source typescript files, http://gruntjs.com/configuring-tasks#files
                 out: 'app/main.js', // If specified, generate an out.js file which is the merged js file
                 watch: 'app'
+            },
+            test: {
+                src: ["app/scripts/test/*.ts"], // The source typescript files, http://gruntjs.com/configuring-tasks#files
+                out: 'app/scripts/test/testSpec.js', // If specified, generate an out.js file which is the merged js file
+                watch: 'app/scripts/test'
+
             }
         },
         copy: {
@@ -48,7 +54,7 @@ module.exports = function (grunt) {
 
 
     // register the defaults
-    grunt.registerTask("default", ["ts:dev"]);
+    grunt.registerTask("default", ["ts:dev", "ts:test"]);
     grunt.registerTask("minify", ["uglify:main"]);
     grunt.registerTask("start", ["connect:server"]);
 };

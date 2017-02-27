@@ -31,12 +31,11 @@ var ProgressBar;
 (function (ProgressBar) {
     var Controllers;
     (function (Controllers) {
-        var DemoController = (function () {
-            function DemoController($scope) {
+        var ProgressBarController = (function () {
+            function ProgressBarController($scope) {
                 $scope.dynamic = 25;
                 $scope.max = 100;
                 $scope.min = 0;
-                $scope.isDecrementButtonDisabled = false;
                 function compareValue(value) {
                     value = (value == 25) ? 25 : 10;
                     return value;
@@ -51,10 +50,10 @@ var ProgressBar;
                     $scope.dynamic = changedValue < 0 ? 0 : changedValue;
                 };
             }
-            DemoController.$inject = ["$scope"];
-            return DemoController;
+            ProgressBarController.$inject = ["$scope"];
+            return ProgressBarController;
         })();
-        Controllers.DemoController = DemoController;
+        Controllers.ProgressBarController = ProgressBarController;
     })(Controllers = ProgressBar.Controllers || (ProgressBar.Controllers = {}));
 })(ProgressBar || (ProgressBar = {}));
 var ProgressBar;
@@ -74,4 +73,31 @@ var ProgressBar;
     new App();
 })(ProgressBar || (ProgressBar = {}));
 angular.module(ProgressBar.ProgressBarConstants.CONTROLLERS, []).controller(ProgressBar.Controllers);
+describe('calculator', function () {
+    beforeEach(angular.mock.inject('angular.progressbar'));
+    var $controller, progressBarController, scope;
+    beforeEach(angular.mock.inject(function ($rootScope, _$controller_) {
+        scope = $rootScope.$new();
+        progressBarController = _$controller_('ProgressBarController', {
+            $scope: scope
+        });
+    }));
+    describe('Test case for progress bar controler', function () {
+        it('Expect variables are assigned', function () {
+            expect(scope.dynamic).toBe(25);
+            expect(scope.max).toBe(100);
+            expect(scope.min).toBe(0);
+        });
+        it('Expect incrementProgress increments value by 25/10', function () {
+            scope.incrementProgress(25);
+            scope.$apply();
+            expect(scope.dynamic).toBe(50);
+        });
+        it('Expect decrementProgress decrements value by 25/10', function () {
+            scope.decrementProgress(25);
+            scope.$apply();
+            expect(scope.dynamic).toBe(0);
+        });
+    });
+});
 //# sourceMappingURL=main.js.map
